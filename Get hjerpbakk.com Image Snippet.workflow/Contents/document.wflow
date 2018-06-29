@@ -200,12 +200,10 @@ for f in sys.argv[1:]:
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>422.000000:253.000000</string>
+				<string>403.000000:253.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -377,12 +375,10 @@ done</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>422.000000:436.000000</string>
+				<string>403.000000:436.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -556,7 +552,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>422.000000:619.000000</string>
+				<string>403.000000:619.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -654,7 +650,7 @@ def getSnippetOfImage(image):
         dimensions = getGIFDimensions(parts)
 
     metadata = naming + dimensions
-    snippet = "{%% include image.html image=""/img/%s/%s"" image-text=""TODO"" width=""%s"" height=""%s"" %%}" % (metadata)
+    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" %%}" % (metadata)
     print snippet
 
 for f in sys.argv[1:]:
@@ -771,7 +767,7 @@ for f in sys.argv[1:]:
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>422.000000:802.000000</string>
+				<string>403.000000:802.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -854,33 +850,33 @@ for f in sys.argv[1:]:
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>28E5C47F-F4B4-4B06-BA41-2B49C0BCEB50</key>
-		<dict>
-			<key>from</key>
-			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
-			<key>to</key>
-			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
-		</dict>
-		<key>315ADC7F-E104-4240-BE12-4B13C7D9BD74</key>
-		<dict>
-			<key>from</key>
-			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
-			<key>to</key>
-			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
-		</dict>
-		<key>6AA9BED3-5286-4EE7-BB79-CA813009C513</key>
+		<key>1622E3C2-748A-41A8-9B33-3F0C56D87132</key>
 		<dict>
 			<key>from</key>
 			<string>DF01C293-AA89-4CB2-ACA9-9B9A81C2138F - DF01C293-AA89-4CB2-ACA9-9B9A81C2138F</string>
 			<key>to</key>
 			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
 		</dict>
-		<key>B9B4CCEE-21C0-4D3D-A4A7-EFF628CE817F</key>
+		<key>245A325D-CF71-4CFF-803E-4C03FA38E5CC</key>
 		<dict>
 			<key>from</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 			<key>to</key>
 			<string>6AC26F13-C713-4AD0-ACB1-9C5D6E676266 - 6AC26F13-C713-4AD0-ACB1-9C5D6E676266</string>
+		</dict>
+		<key>C3F027DF-71EC-4FF2-97BD-88E0C53CD72E</key>
+		<dict>
+			<key>from</key>
+			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
+			<key>to</key>
+			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
+		</dict>
+		<key>C9ABD77C-9349-431B-BDA6-B16E696D6AB3</key>
+		<dict>
+			<key>from</key>
+			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
+			<key>to</key>
+			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 		</dict>
 	</dict>
 	<key>variables</key>

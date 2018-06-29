@@ -51,5 +51,5 @@ def getSnippetOfImage(image):
         dimensions = getGIFDimensions(parts)
 
     metadata = naming + dimensions
-    snippet = "{%% include image.html image=""/img/%s/%s"" image-text=""TODO"" width=""%s"" height=""%s"" %%}" % (metadata)
+    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" %%}" % (metadata)
     print snippet
