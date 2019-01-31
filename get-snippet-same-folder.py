@@ -5,15 +5,14 @@
 # Snippet output looks like this:
 # {% include image.html image="/img/crontab-guru/crontab-guru.png" image-text="crontab guru website" width="869" height="312" %}
 import sys
-from os import path
+from os import path, getcwd
 from PIL import Image, ImageDraw
 import subprocess
 
 def getNaming(parts):
     pathParts = parts[0].split("/")
     fileName = pathParts[len(pathParts) - 1][:-1]
-    fileNameParts = fileName.split(".")
-    folderName = fileNameParts[len(fileNameParts) - 2]
+    folderName = path.basename(path.dirname(parts[0]))
     return folderName, fileName
 
 def getPNGDimensions(parts, divisor):
@@ -72,9 +71,9 @@ def getSnippetOfImage(image):
 
 
 # To test:
-# png = "error-itms-90362-invalid-info-plist-value.png: PNG image data, 1819 x 785, 8-bit colormap, non-interlaced"
+png = "/Users/sankra/projects/sankra.github.io/img/book-scanner/1iphone5s_silver_landscape.png: PNG image data, 1819 x 785, 8-bit colormap, non-interlaced"
 # jpg = "/Users/sankra/Downloads/test/test-images.jpeg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, progressive, precision 8, 600x543, frames 3"
 # gif = "/Users/sankra/Downloads/test/test-images.gif: GIF image data, version 89a, 1 x 1"
-# getSnippetOfImage(png)
+getSnippetOfImage(png)
 # getSnippetOfImage(jpg)
 # getSnippetOfImage(gif)

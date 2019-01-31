@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #
 # Moves an image to an appropriate folder in the img folder of a Jekyll webiste.
+import sys
 import os
 
 def getNaming(imagePath):

@@ -57,6 +57,206 @@
 				<key>ActionName</key>
 				<string>Run Shell Script</string>
 				<key>ActionNameComment</key>
+				<string>Move file to proper place in img folder</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<string>import sys
+import os
+
+def getNaming(imagePath):
+    parts = imagePath.split("/")
+    fileName = parts[len(parts) - 1]
+    fileNameParts = fileName.split(".")
+    folderName = fileNameParts[len(fileNameParts) - 2]
+    return folderName, fileName
+
+def moveImageToImgFolder(oldPath, naming):
+    rootFolder = "/Users/sankra/projects/sankra.github.io/img/"
+    imageFolder = rootFolder + naming[0] + "/"
+    try:
+        os.makedirs(imageFolder)
+    except OSError:
+        if not os.path.isdir(imageFolder):
+            raise
+    newName = imageFolder + naming[1]
+    os.rename(oldPath, newName)
+    return newName
+
+def findPathAndMoveImageToImgFolder(imagePath):
+    naming = getNaming(imagePath)
+    oldPath = imagePath
+    newName = moveImageToImgFolder(oldPath, naming)
+    print newName
+
+for f in sys.argv[1:]:
+	findPathAndMoveImageToImgFolder(f)</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>1</integer>
+					<key>shell</key>
+					<string>/usr/bin/python</string>
+					<key>source</key>
+					<string></string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.RunShellScript</string>
+				<key>CFBundleVersion</key>
+				<string>2.0.3</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunShellScriptAction</string>
+				<key>InputUUID</key>
+				<string>DADC17BB-5E55-4626-9A52-9E0C8B8B8154</string>
+				<key>Keywords</key>
+				<array>
+					<string>Shell</string>
+					<string>Script</string>
+					<string>Command</string>
+					<string>Run</string>
+					<string>Unix</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>6C054634-E1CE-4A4B-A76F-56038BEF765A</string>
+				<key>UUID</key>
+				<string>DF01C293-AA89-4CB2-ACA9-9B9A81C2138F</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>inputMethod</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>423.000000:305.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.0.3</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<key>ActionName</key>
+				<string>Run Shell Script</string>
+				<key>ActionNameComment</key>
 				<string>Optimize image</string>
 				<key>ActionParameters</key>
 				<dict>
@@ -178,7 +378,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>473.000000:305.000000</string>
+				<string>423.000000:487.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -352,7 +552,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>473.000000:487.000000</string>
+				<string>423.000000:669.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -411,14 +611,15 @@ done</string>
 				<dict>
 					<key>COMMAND_STRING</key>
 					<string>import sys
-from os import path, getcwd
+from os import path
 from PIL import Image, ImageDraw
 import subprocess
 
 def getNaming(parts):
     pathParts = parts[0].split("/")
     fileName = pathParts[len(pathParts) - 1][:-1]
-    folderName = path.basename(path.dirname(parts[0]))
+    fileNameParts = fileName.split(".")
+    folderName = fileNameParts[len(fileNameParts) - 2]
     return folderName, fileName
 
 def getPNGDimensions(parts, divisor):
@@ -585,7 +786,7 @@ for f in sys.argv[1:]:
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>473.000000:669.000000</string>
+				<string>423.000000:851.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -668,21 +869,28 @@ for f in sys.argv[1:]:
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>86FF0455-7328-410E-B9C9-7B981476948D</key>
+		<key>72F857C2-9FAB-4553-BD3B-6E00F6D122D4</key>
+		<dict>
+			<key>from</key>
+			<string>DF01C293-AA89-4CB2-ACA9-9B9A81C2138F - DF01C293-AA89-4CB2-ACA9-9B9A81C2138F</string>
+			<key>to</key>
+			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
+		</dict>
+		<key>C53A56EE-D9CA-4746-B5E1-CC14501BB08F</key>
 		<dict>
 			<key>from</key>
 			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
 			<key>to</key>
 			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
 		</dict>
-		<key>87709B46-78A6-4176-AB6A-612969D974B5</key>
+		<key>DC96494D-794F-4BBF-BD21-6C85EFE81C97</key>
 		<dict>
 			<key>from</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 			<key>to</key>
 			<string>6AC26F13-C713-4AD0-ACB1-9C5D6E676266 - 6AC26F13-C713-4AD0-ACB1-9C5D6E676266</string>
 		</dict>
-		<key>945DB2BF-F371-463C-8C90-7B0326F77620</key>
+		<key>DEA0B36F-046C-45F1-8ABF-D16467D85F47</key>
 		<dict>
 			<key>from</key>
 			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
@@ -722,7 +930,7 @@ for f in sys.argv[1:]:
 		<key>serviceProcessesInput</key>
 		<integer>0</integer>
 		<key>systemImageName</key>
-		<string>NSTouchBarShare</string>
+		<string>NSTouchBarFolder</string>
 		<key>useAutomaticInputType</key>
 		<integer>0</integer>
 		<key>workflowTypeIdentifier</key>
