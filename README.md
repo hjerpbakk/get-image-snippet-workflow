@@ -11,8 +11,6 @@ The generated HTML snippet supports both lazy loading and a lightbox.
 
 ## Installation
 
-These 
-
 On a clean install of macOS, do the following.
 
 0. Install [ImageOptim](https://imageoptim.com/mac) for maximum minification.
