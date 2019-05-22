@@ -54,10 +54,10 @@ def createSmallerImages(image, parts, naming):
     folderName = naming[0]
     originalImage = Image.open(imagePath + fileExtension)
     dimensions = getDimensions(image, parts, 1)
-    supportedWidths = [ 2304, 1563, 1366, 1024, 750, 640 ]
+    supportedWidths = [ 2304, 2049, 1563, 1366, 1024, 750, 640 ]
     srcset = ""
     originalSizeUnused = True
-    for i in range(0, 6):
+    for i in range(0, 7):
         filePostfix = ""
         if (dimensions[0] > supportedWidths[i]):
             

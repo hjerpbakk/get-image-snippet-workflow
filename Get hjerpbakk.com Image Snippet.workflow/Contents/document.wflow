@@ -460,10 +460,10 @@ def createSmallerImages(image, parts, naming):
     folderName = naming[0]
     originalImage = Image.open(imagePath + fileExtension)
     dimensions = getDimensions(image, parts, 1)
-    supportedWidths = [ 2304, 1563, 1366, 1024, 750, 640 ]
+    supportedWidths = [ 2304, 2049, 1563, 1366, 1024, 750, 640 ]
     srcset = ""
     originalSizeUnused = True
-    for i in range(0, 6):
+    for i in range(0, 7):
         filePostfix = ""
         if (dimensions[0] &gt; supportedWidths[i]):
             
@@ -689,26 +689,26 @@ for f in sys.argv[1:]:
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>003B543C-AEC8-4A08-B05D-2006D7206BE3</key>
+		<key>1889C14A-51C0-4C08-BBDF-922C280A43B0</key>
 		<dict>
 			<key>from</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 			<key>to</key>
 			<string>6AC26F13-C713-4AD0-ACB1-9C5D6E676266 - 6AC26F13-C713-4AD0-ACB1-9C5D6E676266</string>
 		</dict>
-		<key>3E6FD6C3-E7E9-4B85-B9AA-04CC737A554F</key>
-		<dict>
-			<key>from</key>
-			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
-			<key>to</key>
-			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
-		</dict>
-		<key>94EEA0AE-2C0E-45BC-B4AD-68BC1A01400D</key>
+		<key>901CC53A-868E-4A1C-8C82-D2AD0A241667</key>
 		<dict>
 			<key>from</key>
 			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
 			<key>to</key>
 			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
+		</dict>
+		<key>9C88A1B7-6A21-4046-BFA9-BC97BC1A4F6F</key>
+		<dict>
+			<key>from</key>
+			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
+			<key>to</key>
+			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 		</dict>
 	</dict>
 	<key>variables</key>
