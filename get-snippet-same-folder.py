@@ -60,7 +60,6 @@ def createSmallerImages(image, parts, naming):
     for i in range(0, 7):
         filePostfix = ""
         if (dimensions[0] > supportedWidths[i]):
-            
             resizeRatio = supportedWidths[i] / float(dimensions[0])
             newHeight = int(round(dimensions[1] * resizeRatio))
             newImage = originalImage.resize((supportedWidths[i], newHeight), Image.ANTIALIAS)
