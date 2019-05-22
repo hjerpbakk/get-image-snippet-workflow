@@ -44,25 +44,46 @@ def getDimensions(image, parts, divisor):
         dimensions = getGIFDimensions(parts, divisor)
     return dimensions
 
-def createTransparentImage(image, parts):
-    dimensions = getDimensions(image, parts, 1) 
-    transparentImageName = "/Users/sankra/projects/sankra.github.io/assets/img/" + str(dimensions[0] / 2) + "x" + str(dimensions[1] / 2) + ".png"
-    if path.isfile(transparentImageName):
-        return
+def createSrcsetItem(folder, filename, width):
+    return "/img/" + folder + "/" + filename + " " + width + "w, "
 
-    blank_image = Image.new('RGBA', (dimensions[0], dimensions[1]), (255,255,255,0))
-    ImageDraw.Draw(blank_image)
-    blank_image.save(transparentImageName)
-    subprocess.call(["open", "-a", "ImageOptim", transparentImageName])
-
+def createSmallerImages(image, parts, naming):
+    imagePath, fileExtension = path.splitext(parts[0])
+    fileExtension = fileExtension[:-1]
+    fileName = naming[1].split(".")[0]
+    folderName = naming[0]
+    originalImage = Image.open(imagePath + fileExtension)
+    dimensions = getDimensions(image, parts, 1)
+    supportedWidths = [ 2304, 1563, 1366, 1024, 750, 640 ]
+    srcset = ""
+    originalSizeUnused = True
+    for i in range(0, 6):
+        filePostfix = ""
+        if (dimensions[0] > supportedWidths[i]):
+            
+            resizeRatio = supportedWidths[i] / float(dimensions[0])
+            newHeight = int(round(dimensions[1] * resizeRatio))
+            newImage = originalImage.resize((supportedWidths[i], newHeight), Image.ANTIALIAS)
+            filePostfix = "_" + str(supportedWidths[i]) + fileExtension
+            newImage.save(imagePath + filePostfix, quality=100)
+            srcset += createSrcsetItem(folderName, fileName + filePostfix, str(supportedWidths[i]))
+        elif (originalSizeUnused):
+            # Use original width once if image is too small to utilise entire scale
+            originalSizeUnused = False
+            filePostfix = "_" + str(dimensions[0]) + fileExtension
+            originalImage.save(imagePath + filePostfix)
+            srcset += createSrcsetItem(folderName, fileName + filePostfix, str(dimensions[0]))
+        subprocess.call(["open", "-a", "ImageOptim", imagePath + filePostfix])
+    return srcset[:-2]
+        
 def getSnippetOfImage(image):
     parts = image.split()
-    createTransparentImage(image, parts)
-
     naming = getNaming(parts)
+    srcset = createSmallerImages(image, parts, naming)
     dimensions = getDimensions(image, parts, 2)
-    metadata = naming + dimensions
-    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" %%}" % (metadata)
+    metadata = naming + dimensions + (srcset,)
+    # TODO: Need multiples of this script, 1x, 2x (this) and 3x
+    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" srcset=\"%s\" %%}" % (metadata)
     print snippet
  
 # https://pillow.readthedocs.io/en/3.0.0/installation.html#os-x-installation
@@ -71,7 +92,7 @@ def getSnippetOfImage(image):
 
 
 # To test:
-png = "/Users/sankra/projects/sankra.github.io/img/book-scanner/1iphone5s_silver_landscape.png: PNG image data, 1819 x 785, 8-bit colormap, non-interlaced"
+png = "/Users/sankra/projects/sankra.github.io/img/signing-commits-github-desktop/signing-commits-github-desktop.png: PNG image data, 2120 x 1428, 8-bit colormap, non-interlaced"
 # jpg = "/Users/sankra/Downloads/test/test-images.jpeg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, progressive, precision 8, 600x543, frames 3"
 # gif = "/Users/sankra/Downloads/test/test-images.gif: GIF image data, version 89a, 1 x 1"
 getSnippetOfImage(png)

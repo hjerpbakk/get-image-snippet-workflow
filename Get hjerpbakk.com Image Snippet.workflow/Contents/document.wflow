@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.39</string>
+	<string>444.42</string>
 	<key>AMApplicationVersion</key>
 	<string>2.9</string>
 	<key>AMDocumentVersion</key>
@@ -178,7 +178,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>473.000000:305.000000</string>
+				<string>309.000000:305.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -352,7 +352,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>473.000000:487.000000</string>
+				<string>309.000000:487.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -450,25 +450,46 @@ def getDimensions(image, parts, divisor):
         dimensions = getGIFDimensions(parts, divisor)
     return dimensions
 
-def createTransparentImage(image, parts):
-    dimensions = getDimensions(image, parts, 1) 
-    transparentImageName = "/Users/sankra/projects/sankra.github.io/assets/img/" + str(dimensions[0] / 2) + "x" + str(dimensions[1] / 2) + ".png"
-    if path.isfile(transparentImageName):
-        return
+def createSrcsetItem(folder, filename, width):
+    return "/img/" + folder + "/" + filename + " " + width + "w, "
 
-    blank_image = Image.new('RGBA', (dimensions[0], dimensions[1]), (255,255,255,0))
-    ImageDraw.Draw(blank_image)
-    blank_image.save(transparentImageName)
-    subprocess.call(["open", "-a", "ImageOptim", transparentImageName])
-
+def createSmallerImages(image, parts, naming):
+    imagePath, fileExtension = path.splitext(parts[0])
+    fileExtension = fileExtension[:-1]
+    fileName = naming[1].split(".")[0]
+    folderName = naming[0]
+    originalImage = Image.open(imagePath + fileExtension)
+    dimensions = getDimensions(image, parts, 1)
+    supportedWidths = [ 2304, 1563, 1366, 1024, 750, 640 ]
+    srcset = ""
+    originalSizeUnused = True
+    for i in range(0, 6):
+        filePostfix = ""
+        if (dimensions[0] &gt; supportedWidths[i]):
+            
+            resizeRatio = supportedWidths[i] / float(dimensions[0])
+            newHeight = int(round(dimensions[1] * resizeRatio))
+            newImage = originalImage.resize((supportedWidths[i], newHeight), Image.ANTIALIAS)
+            filePostfix = "_" + str(supportedWidths[i]) + fileExtension
+            newImage.save(imagePath + filePostfix, quality=100)
+            srcset += createSrcsetItem(folderName, fileName + filePostfix, str(supportedWidths[i]))
+        elif (originalSizeUnused):
+            # Use original width once if image is too small to utilise entire scale
+            originalSizeUnused = False
+            filePostfix = "_" + str(dimensions[0]) + fileExtension
+            originalImage.save(imagePath + filePostfix)
+            srcset += createSrcsetItem(folderName, fileName + filePostfix, str(dimensions[0]))
+        subprocess.call(["open", "-a", "ImageOptim", imagePath + filePostfix])
+    return srcset[:-2]
+        
 def getSnippetOfImage(image):
     parts = image.split()
-    createTransparentImage(image, parts)
-
     naming = getNaming(parts)
+    srcset = createSmallerImages(image, parts, naming)
     dimensions = getDimensions(image, parts, 2)
-    metadata = naming + dimensions
-    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" %%}" % (metadata)
+    metadata = naming + dimensions + (srcset,)
+    # TODO: Need multiples of this script, 1x, 2x (this) and 3x
+    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" srcset=\"%s\" %%}" % (metadata)
     print snippet
 
 for f in sys.argv[1:]:
@@ -585,7 +606,7 @@ for f in sys.argv[1:]:
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>473.000000:669.000000</string>
+				<string>309.000000:669.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -668,26 +689,26 @@ for f in sys.argv[1:]:
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>86FF0455-7328-410E-B9C9-7B981476948D</key>
-		<dict>
-			<key>from</key>
-			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
-			<key>to</key>
-			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
-		</dict>
-		<key>87709B46-78A6-4176-AB6A-612969D974B5</key>
+		<key>003B543C-AEC8-4A08-B05D-2006D7206BE3</key>
 		<dict>
 			<key>from</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 			<key>to</key>
 			<string>6AC26F13-C713-4AD0-ACB1-9C5D6E676266 - 6AC26F13-C713-4AD0-ACB1-9C5D6E676266</string>
 		</dict>
-		<key>945DB2BF-F371-463C-8C90-7B0326F77620</key>
+		<key>3E6FD6C3-E7E9-4B85-B9AA-04CC737A554F</key>
 		<dict>
 			<key>from</key>
 			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
 			<key>to</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
+		</dict>
+		<key>94EEA0AE-2C0E-45BC-B4AD-68BC1A01400D</key>
+		<dict>
+			<key>from</key>
+			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
+			<key>to</key>
+			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
 		</dict>
 	</dict>
 	<key>variables</key>
