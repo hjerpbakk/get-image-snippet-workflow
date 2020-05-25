@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.42</string>
+	<string>492</string>
 	<key>AMApplicationVersion</key>
-	<string>2.9</string>
+	<string>2.10</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -125,9 +125,9 @@ done</string>
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<string></string>
+						<false/>
 						<key>name</key>
-						<string>source</string>
+						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -138,9 +138,9 @@ done</string>
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<false/>
+						<string></string>
 						<key>name</key>
-						<string>CheckedForUserDefaultShell</string>
+						<string>source</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -299,9 +299,9 @@ done</string>
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<string></string>
+						<false/>
 						<key>name</key>
-						<string>source</string>
+						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -312,9 +312,9 @@ done</string>
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<false/>
+						<string></string>
 						<key>name</key>
-						<string>CheckedForUserDefaultShell</string>
+						<string>source</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -489,7 +489,7 @@ def getSnippetOfImage(image):
     dimensions = getDimensions(image, parts, 2)
     metadata = naming + dimensions + (srcset,)
     # TODO: Need multiples of this script, 1x, 2x (this) and 3x
-    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" srcset=\"%s\" %%}" % (metadata)
+    snippet = "{%% include_cached image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" srcset=\"%s\" %%}" % (metadata)
     print snippet
 
 for f in sys.argv[1:]:
@@ -553,9 +553,9 @@ for f in sys.argv[1:]:
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<string></string>
+						<false/>
 						<key>name</key>
-						<string>source</string>
+						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -566,9 +566,9 @@ for f in sys.argv[1:]:
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<false/>
+						<string></string>
 						<key>name</key>
-						<string>CheckedForUserDefaultShell</string>
+						<string>source</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -689,26 +689,26 @@ for f in sys.argv[1:]:
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>1889C14A-51C0-4C08-BBDF-922C280A43B0</key>
+		<key>75270FDB-BB61-40F4-8888-469FBE05B6B1</key>
+		<dict>
+			<key>from</key>
+			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
+			<key>to</key>
+			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
+		</dict>
+		<key>910E418B-766E-46A2-8D37-641D65B109F5</key>
 		<dict>
 			<key>from</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 			<key>to</key>
 			<string>6AC26F13-C713-4AD0-ACB1-9C5D6E676266 - 6AC26F13-C713-4AD0-ACB1-9C5D6E676266</string>
 		</dict>
-		<key>901CC53A-868E-4A1C-8C82-D2AD0A241667</key>
+		<key>CFCB59CE-9ED8-41B6-9004-40B6CBCEF877</key>
 		<dict>
 			<key>from</key>
 			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
 			<key>to</key>
 			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
-		</dict>
-		<key>9C88A1B7-6A21-4046-BFA9-BC97BC1A4F6F</key>
-		<dict>
-			<key>from</key>
-			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
-			<key>to</key>
-			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 		</dict>
 	</dict>
 	<key>variables</key>
