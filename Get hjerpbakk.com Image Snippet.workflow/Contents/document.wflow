@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>492</string>
+	<string>509</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -489,7 +489,7 @@ def getSnippetOfImage(image):
     dimensions = getDimensions(image, parts, 2)
     metadata = naming + dimensions + (srcset,)
     # TODO: Need multiples of this script, 1x, 2x (this) and 3x
-    snippet = "{%% include_cached image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" srcset=\"%s\" %%}" % (metadata)
+    snippet = "{%% include image.html image=\"/img/%s/%s\" image-text=\"TODO\" width=\"%s\" height=\"%s\" srcset=\"%s\" %%}" % (metadata)
     print snippet
 
 for f in sys.argv[1:]:
@@ -684,26 +684,32 @@ for f in sys.argv[1:]:
 				</array>
 				<key>arguments</key>
 				<dict/>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>207.000000:68.000000</string>
 			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>75270FDB-BB61-40F4-8888-469FBE05B6B1</key>
+		<key>B0714BFF-E568-472A-99F7-7CFB98759243</key>
 		<dict>
 			<key>from</key>
 			<string>A62BB6E7-6368-4C02-B711-C5951F1ABBAD - A62BB6E7-6368-4C02-B711-C5951F1ABBAD</string>
 			<key>to</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 		</dict>
-		<key>910E418B-766E-46A2-8D37-641D65B109F5</key>
+		<key>D8137347-4C5F-4791-817E-29209FA9E1EA</key>
 		<dict>
 			<key>from</key>
 			<string>381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F - 381A97E0-D5D4-4E94-9D1A-7F39D2B7D85F</string>
 			<key>to</key>
 			<string>6AC26F13-C713-4AD0-ACB1-9C5D6E676266 - 6AC26F13-C713-4AD0-ACB1-9C5D6E676266</string>
 		</dict>
-		<key>CFCB59CE-9ED8-41B6-9004-40B6CBCEF877</key>
+		<key>DC9AAF2C-9392-43F4-9C83-B6A87F16C8A5</key>
 		<dict>
 			<key>from</key>
 			<string>C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C - C7C93C3C-6BD2-4EC3-BFFE-80F93376D39C</string>
